@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://www.devhelp.net/books/books/gdk-pixbuf-2.0.tar.gz
+# Source0-md5:	7a450b88b63278d8de913ce75b976a40
 URL:		http://www.devhelp.net/
 Requires:	devhelp
 BuildArch:	noarch
