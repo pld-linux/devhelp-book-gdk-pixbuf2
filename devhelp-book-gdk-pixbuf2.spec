@@ -1,5 +1,5 @@
-Summary:	DevHelp book: gdk-pixbuf
-Summary(pl):	Ksi±¿ka do DevHelp'a o gdk-pixbuf
+Summary:	DevHelp book: gdk-pixbuf 1.2
+Summary(pl):	Ksi±¿ka do DevHelpa o gdk-pixbuf 1.2
 Name:		devhelp-book-gdk-pixbuf2
 Version:	2.0
 Release:	1
@@ -11,34 +11,28 @@ Requires:	devhelp
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6/share/devhelp/
+%define		_prefix		/usr/X11R6/share/devhelp
 
 %description
-DevHelp book about gdk-pixbuf 1.2
+DevHelp book about gdk-pixbuf 1.2.
 
 %description -l pl
-Ksi±¿ka do DevHelp o gdk-pixbuf 1.2
+Ksi±¿ka do DevHelpa o gdk-pixbuf 1.2.
 
 %prep
-%setup -q -c gdk-pixbuf-%{version} -n gdk-pixbuf-%{version}
-
-%build
-mv -f book gdk-pixbuf-%{version}
-mv -f book.devhelp gdk-pixbuf-%{version}.devhelp
+%setup -q -c -n gdk-pixbuf-%{version}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_prefix}/{books/gdk-pixbuf-%{version},specs}
 
-install -d $RPM_BUILD_ROOT%{_prefix}/books/gdk-pixbuf-%{version}
-install -d $RPM_BUILD_ROOT%{_prefix}/specs
-install gdk-pixbuf-%{version}.devhelp $RPM_BUILD_ROOT%{_prefix}/specs
-install gdk-pixbuf-%{version}/* $RPM_BUILD_ROOT%{_prefix}/books/gdk-pixbuf-%{version}
+install book.devhelp $RPM_BUILD_ROOT%{_prefix}/specs/gdk-pixbuf-%{version}.devhelp
+install book/* $RPM_BUILD_ROOT%{_prefix}/books/gdk-pixbuf-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files 
 %defattr(644,root,root,755)
-#%doc *.gz
-%{_prefix}/books
-%{_prefix}/specs
+%{_prefix}/books/*
+%{_prefix}/specs/*
